@@ -5,3 +5,6 @@ on checkbox
 if ($request->Self_declaration == 'on') {
 	$self_declaration = 1;
 }
+<option value="0" {{@$data[0]->{'category'} == "0"  ? 'selected' : ''}}>A</option>
+
+value="{{$data[0]->Contact_Person_Fax ?? ''}}"
