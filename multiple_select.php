@@ -23,3 +23,31 @@ $ary=
 	  <option value="{{$val['sareavalue']}}" {{ @in_array($val['sareavalue'],$special_data)? 'selected':''}}>{{$val['saname']}}</option>
   @endforeach
 </select>
+======================New Modify===================
+@php
+
+$ary=array(
+		0=> array('sareavalue'=>1,'saname'=>'BORDER AREA' ),
+		1=> array('sareavalue'=>2,'saname'=>'LWE AREA'),
+		2=> array('sareavalue'=>3,'saname'=>'MINORITIES AREA'),
+		3=> array('sareavalue'=>4,'saname'=>'NORTH-EASTERN AREA'),
+		4=> array('sareavalue'=>5,'saname'=>'ASPIRATIONAL DISTRICTS'),
+		5=> array('sareavalue'=>6,'saname'=>'OTHER AREA')
+);
+@endphp
+
+<select size="4" name="special_area[]" multiple="multiple" id="ddl_area_type" class="form-control">
+@foreach($ary as $val)
+    <option value="{{$val['sareavalue']}}" {{ @in_array($val['sareavalue'],$list)? 'selected':''}}>{{$val['saname']}}</option>
+@endforeach
+</select>
+
+On Controller:-
+$sdata = DB::select("select * from dbo.[Special_Areas] where [pk_id]=$id");
+$list=[];
+foreach($sdata as $ssdata)
+{
+	$list[]=$ssdata->special_area;
+}
+// return $list;
+return view('rob.dataform',["data"=>$data,"special_data"=>$list]);
