@@ -8,3 +8,8 @@ if ($request->Self_declaration == 'on') {
 <option value="0" {{@$data[0]->{'category'} == "0"  ? 'selected' : ''}}>A</option>
 
 value="{{$data[0]->Contact_Person_Fax ?? ''}}"
+
+
+value="{{@$av_client_req->{'Secondage'} ?? ''}}"
+
+{{@$av_client_req->{'AV Media Category Name'} == 0 && @$av_client_req->{'AV Media Category Name'} != ""  ? 'checked' : ''}}
