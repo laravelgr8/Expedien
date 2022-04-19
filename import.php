@@ -82,6 +82,7 @@ class StudentController extends Controller
     public function import() 
     {
         Excel::import(new StudentsImport,request()->file('file'));  
+	//Excel::selectSheets('sheet1')(new StudentsImport,request()->file('file'));   when you want select specific sheet from excel
         return back();
     }
 }
